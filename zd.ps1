@@ -1,5 +1,7 @@
 # Zotify Downloader wrapper - OPUS FORMAT
-# parameter = Spotify URL 
+# parameter = Spotify-URL 
+# parameter = Spotify-URL 
+# Assumes installation of LLzotify https://github.com/lolo83560/LLzotify
 
 param (
 	[string]$url
@@ -44,15 +46,13 @@ $output = switch ($DLDtype) {
 }
 
 
-# to regenerate C:\Users\Laurent\AppData\Roaming\Zotify\credentials.json
-# use librespot-auth while turning firewall off
 
 # make unique name for logfile, generated from $localpath hash 
 $md5 = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
 $hash = [System.BitConverter]::ToString($md5.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($localpath))).Replace("-", "").ToLower()
 $logfilename = 'log-'+$hash+'.txt'
 
-# now go ahead lopp it till completion
+# now go ahead loop it till completion
 $iteration = 1
 $startime = get-date
 do {
@@ -62,7 +62,13 @@ do {
 	$("-" * $localpath.length)
 	">>>> ITERATION $iteration <<<<"
 	$("=" * 80)
+	
+	# assume spotify credentials stored into C:\Users\<your_name>\AppData\Roaming\Zotify\credentials.json
+	# Hint: to regenerate 
+	#       -> use librespot-auth making sure turning firewall off
+	#          install this one, better https://github.com/ManiArasteh/librespot-auth.git
 	zotify --root-path $rootpath --output $output --retry-attempts 5 --print-download-progress=false --download-lyrics=false --download-format opus --download-quality high $spoturi 2>&1 | Tee-Object -file $logfilename
+
 	$logerr = get-content $logfilename
 	$iteration++
 	"ErrGal " + ($logerr -match 'GENERAL DOWNLOAD ERROR').count
