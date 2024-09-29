@@ -1,5 +1,7 @@
-<pA Powershell wrapper to loop-download using LLZotify/p>
+A Powershell wrapper to loop-download using LLZotify
+
 2 variants : one w/ opus output, the other w/ MP3
+
 Install in C:\Program Files\PowerShell\Scripts\
 
 Usage:   zd <spotify_URL>
