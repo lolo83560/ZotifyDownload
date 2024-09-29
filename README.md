@@ -6,7 +6,7 @@ Usage:   zd <spotify_URL>
      or zd3 <spotify_URL>
 
 Note: makes use of modded LLzotify -> install: pip install git+https://github.com/lolo83560/LLzotify.git)
+<p align="center">
+  <img src="[https://github.com/lolo83560/ZotifyDownload/blob/master/illustration.png]" width="50%" alt="Illustration">
+</p>
 
-<p image center
-https://github.com/lolo83560/ZotifyDownload/blob/master/illustration.png
-/p>
