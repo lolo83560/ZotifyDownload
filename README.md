@@ -9,3 +9,4 @@ Usage:   zd <spotify_URL>
 
 Note: makes use of modded LLzotify -> install: pip install git+https://github.com/lolo83560/LLzotify.git)
 
+Note2: assumes Spotify credentials.json otherwise properly generated and saved where it belongs, as explained here https://github.com/zotify-dev/zotify/issues/174#issuecomment-2387099375
