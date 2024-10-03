@@ -1,6 +1,5 @@
 # Zotify Downloader wrapper - OPUS FORMAT
 # parameter = Spotify-URL 
-# parameter = Spotify-URL 
 # Assumes installation of LLzotify https://github.com/lolo83560/LLzotify
 
 param (
@@ -24,7 +23,7 @@ $temppath = $matches[1]
 # replace problem chars for filenames [ < > : " / \ | ? * ] with a dash 
 $localpath = $temppath -replace '[\<\>\:\"\/\\\|\?\*]','-'
 
-# write-host [$url] [$localPath]
+#dbg write-host [$url] [$localPath]
 
 # from the URL, get the download type (track/album/playlist/episode/artist) & Spotify ID, transform into URI
 $url -match "^.*/(.*?)/(.*?)$" | out-null	
@@ -32,7 +31,7 @@ $DLDtype = $matches[1]
 $spotID = $matches[2]
 $spoturi = "spotify:" + $DLDtype + ":" + $spotID
 
-# write-host [$DLDtype] [$spotID] [$spoturi]
+#dbg write-host [$DLDtype] [$spotID] [$spoturi]
 
 $rootpath = ".\\" # + $localpath
 
@@ -62,7 +61,9 @@ do {
 	$("-" * $localpath.length)
 	">>>> ITERATION $iteration <<<<"
 	$("=" * 80)
+	"Log file name: $logfilename"
 	
+	# run Zotify download on url
 	# assume spotify credentials stored into C:\Users\<your_name>\AppData\Roaming\Zotify\credentials.json
 	# Hint: to regenerate 
 	#       -> use librespot-auth making sure turning firewall off
