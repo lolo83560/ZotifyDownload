@@ -64,7 +64,7 @@ do {
 	"Log file name: $logfilename"
 	if ($iteration -gt 1) { 		# beginnning at 2nd iteration, pause 30s to let Spotify cool down
 		" "
-		"~~~~~~~ waiting 10s to let Spotify server cool down :) ~~~~~~~"
+		"~~~~~~~ waiting 30s to let Spotify server cool down :) ~~~~~~~"
 		" "
 		start-sleep -seconds 30 
 	}	
