@@ -55,6 +55,12 @@ $logfilename = 'log-'+$hash+'.txt'
 $iteration = 1
 $startime = get-date
 do {
+	if (iteration -gt 1) { 		# beginnning at 2nd iteration, pause 30s to let Spotify cool down
+		" "
+		"~~~~~~~ waiting 10s to let Spotify server cool down :) ~~~~~~~"
+		" "
+		start-sleep -seconds 30 
+	}	
 	$("=" * 80)
 	$("-" * $localpath.length)
 	$localpath
