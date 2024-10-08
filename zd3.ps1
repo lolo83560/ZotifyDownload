@@ -13,6 +13,13 @@ if ($psboundparameters.count -eq 0)
 		exit
 }
 
+# trim ?si=... option at the end of url
+# these occur when copied from spot/spotx app
+# e.g. 'https://open.spotify.com/playlist/3DuMUKpBVP6lIaQEEmye5j?si=933eb6420de54795
+
+$url = $url -replace '(.*?)\?.*$','$1'
+read-host $url
+
 # retrieve page title from Spotify URL webpage
 $page = Invoke-webrequest -Uri $url
 $page.content -match "<title>(.+)</title>" | out-null	# get the <title> section
