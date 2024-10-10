@@ -64,11 +64,11 @@ do {
 	$("=" * 80)
 	$("-" * $localpath.length)
 	$localpath
-	"URL: $url"
 	$("-" * $localpath.length)
 	">>>> ITERATION $iteration <<<<"
 	$("=" * 80)
 	"Log file name: $logfilename"
+	"URL: $url"
 	if ($iteration -gt 1) { 		# beginnning at 2nd iteration, pause 30s to let Spotify cool down
 		" "
 		"~~~~~~~ waiting 30s to let Spotify server cool down :) ~~~~~~~"
