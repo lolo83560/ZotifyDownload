@@ -58,6 +58,7 @@ do {
 	$("=" * 80)
 	$("-" * $localpath.length)
 	$localpath
+	"URL: $url"
 	$("-" * $localpath.length)
 	">>>> ITERATION $iteration <<<<"
 	$("=" * 80)
@@ -92,3 +93,4 @@ remove-item -force $logfilename
 "                                          "
 $deltime = ( "{0:hh\:mm\:ss}" -f [timespan]::fromseconds(($stoptime-$startime).totalseconds) )
 'Time taken H:M:S: '+$deltime
+"Iterations : $iteration"
