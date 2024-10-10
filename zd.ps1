@@ -13,6 +13,12 @@ if ($psboundparameters.count -eq 0)
 		exit
 }
 
+# trim ?si=... option at the end of url
+# these occur when copied from spot/spotx app
+# e.g. 'https://open.spotify.com/playlist/3DuMUKpBVP6lIaQEEmye5j?si=933eb6420de54795
+
+$url = $url -replace '(.*?)\?.*$','$1'
+
 # retrieve page title from Spotify URL webpage
 $page = Invoke-webrequest -Uri $url
 $page.content -match "<title>(.+)</title>" | out-null	# get the <title> section
@@ -63,6 +69,12 @@ do {
 	">>>> ITERATION $iteration <<<<"
 	$("=" * 80)
 	"Log file name: $logfilename"
+	if ($iteration -gt 1) { 		# beginnning at 2nd iteration, pause 30s to let Spotify cool down
+		" "
+		"~~~~~~~ waiting 30s to let Spotify server cool down :) ~~~~~~~"
+		" "
+		start-sleep -seconds 30 
+	}	
 	
 	# run Zotify download on url
 	# assume spotify credentials stored into C:\Users\<your_name>\AppData\Roaming\Zotify\credentials.json
