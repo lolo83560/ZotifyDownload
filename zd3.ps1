@@ -61,6 +61,10 @@ $logfilename = 'log-'+$hash+'.txt'
 $iteration = 1
 $startime = get-date
 do {
+	
+	# add command line on top of logfile for easier rerun
+	"zd $url" | out-file $logfilename
+	
 	$("=" * 80)
 	$("-" * $localpath.length)
 	$localpath
@@ -70,12 +74,13 @@ do {
 	"Log file name: $logfilename"
 	"URL: $url"
 	$("=" * 80)
-	if ($iteration -gt 1) { 		# beginnning at 2nd iteration, pause 30s to let Spotify cool down
-		" "
-		"~~~~~~~ waiting 30s to let Spotify server cool down :) ~~~~~~~"
-		" "
-		start-sleep -seconds 30 
-	}	
+
+#	if ($iteration -gt 1) { 		# beginnning at 2nd iteration, pause 30s to let Spotify cool down
+#		" "
+#		"~~~~~~~ waiting 30s to let Spotify server cool down :) ~~~~~~~"
+#		" "
+#		start-sleep -seconds 30 
+#	}	
 	
 	# run Zotify download on url
 	# assume spotify credentials stored into C:\Users\<your_name>\AppData\Roaming\Zotify\credentials.json
