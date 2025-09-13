@@ -50,7 +50,8 @@ $output = switch ($DLDtype) {
    default    { "{artist}/{song_name}.opus"; break}
 }
 
-
+# Make Powerwhell window title = downloaded info
+$host.ui.RawUI.WindowTitle = $localpath
 
 # make unique name for logfile, generated from $localpath hash 
 $md5 = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
