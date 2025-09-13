@@ -62,7 +62,7 @@ $urlfilename = 'url-'+$hash+'.txt'
 $iteration = 1
 $startime = get-date
 # record command line ir url logfile for easier rerun
-"zd3 $url" | out-file $urlfilename
+"zd $url" | out-file $urlfilename
 do {
 	$("=" * 80)
 	$("-" * $localpath.length)
