@@ -56,15 +56,14 @@ $output = switch ($DLDtype) {
 $md5 = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
 $hash = [System.BitConverter]::ToString($md5.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($localpath))).Replace("-", "").ToLower()
 $logfilename = 'log-'+$hash+'.txt'
+$urlfilename = 'url-'+$hash+'.txt'
 
 # now go ahead loop it till completion
 $iteration = 1
 $startime = get-date
+# record command line ir url logfile for easier rerun
+"zd3 $url" | out-file $urlfilename
 do {
-	
-	# add command line on top of logfile for easier rerun
-	"zd $url" | out-file $logfilename
-	
 	$("=" * 80)
 	$("-" * $localpath.length)
 	$localpath
@@ -102,6 +101,7 @@ while (
 	)
 $stoptime = get-date
 remove-item -force $logfilename
+remove-item -force $urlfilename
 "                                          "
 "██████   ██████  ███    ██ ███████     ██ "
 "██   ██ ██    ██ ████   ██ ██          ██ "
