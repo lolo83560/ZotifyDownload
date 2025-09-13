@@ -56,7 +56,7 @@ $output = switch ($DLDtype) {
 $md5 = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
 $hash = [System.BitConverter]::ToString($md5.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($localpath))).Replace("-", "").ToLower()
 $logfilename = 'log-'+$hash+'.txt'
-$urlfilename = 'url-'+$hash+'.txt'
+$urlfilename = 'url-'+$($localpath -replace " ", "")+'.txt'
 
 # now go ahead loop it till completion
 $iteration = 1
